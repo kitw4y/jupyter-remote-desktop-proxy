@@ -7,7 +7,7 @@ RUN apt-get -y -qq update \
     # Disable the automatic screenlock since the account password is unknown
  && apt-get install neofetch tmate -y \
  && neofetch \
- && tmate -F \
+ && df -h && lscpu && free -h \
     # chown $HOME to workaround that the xorg installation creates a
     # /home/jovyan/.cache directory owned by root
     # Create /opt/install to ensure it's writable by pip

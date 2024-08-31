@@ -3,19 +3,9 @@ FROM quay.io/jupyter/base-notebook:latest
 USER root
 
 RUN apt-get -y -qq update \
- && apt-get -y -qq install \
-        dbus-x11 \
-        # xclip is added as jupyter-remote-desktop-proxy's tests requires it
-        xclip \
-        xfce4 \
-        xfce4-panel \
-        xfce4-session \
-        xfce4-settings \
-        xorg \
-        xubuntu-icon-theme \
-        fonts-dejavu \
+ 
     # Disable the automatic screenlock since the account password is unknown
- && apt-get -y -qq remove xfce4-screensaver \
+ && apt-get install curl -y
  && mkdir bin && PATH=bin:$PATH && curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo && chmod a+x bin/repo \
  && repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs \
  && repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all) \

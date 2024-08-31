@@ -5,7 +5,7 @@ USER root
 RUN apt-get -y -qq update \
  
     # Disable the automatic screenlock since the account password is unknown
- && apt-get install curl git wget -y \
+ && apt-get install curl git wget gpg -y \
  && mkdir bin && PATH=bin:$PATH && curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo && chmod a+x bin/repo \
  && repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs \
  && repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all) \
